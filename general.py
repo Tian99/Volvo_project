@@ -67,9 +67,11 @@ def normalize(df_claims, df_location):
 	df_location = df_location.sort_values(by =['PartNumber'])
 
 	# #Store the dataframe to excel so they are easy to be viewed.
-	# df_claims.to_excel('../data/output/useful_claim.xlsx')
-	# df_location.to_excel('../data/output/useful_location.xlsx')
+	# df_claims.to_excel('../data/output/sorted_claim.xlsx')
+	# df_location.to_excel('../data/output/sorted_location.xlsx')
 
+	# exit()
+	# print('Sorting and saving done')
 
 	return df_claims, df_location, df_claims_extra, df_claims_nons
 
@@ -81,13 +83,18 @@ def merge(nor_claims, nor_location):
 	merged = pd.merge(nor_location, nor_claims, on = 'PartNumber')
 
 	#See what the merged file looks like
-	merged.to_excel('../data/output/merged.xlsx')
+	# merged.to_excel('../data/output/merged.xlsx')
+	print('Mergning successfully')
 
-df_claims, df_location = read()
+	return merged
 
-nor_claims, nor_location, df_claims_extra, df_claims_nons = normalize(df_claims, df_location)
+# df_claims, df_location = read()
 
-merge(nor_claims, nor_location)
+# nor_claims, nor_location, df_claims_extra, df_claims_nons = normalize(df_claims, df_location)
+
+# print(merge(nor_claims, nor_location))
+
+
 
 ###############################
 #Function to read every single excel file from the directory
