@@ -1,4 +1,7 @@
 def analyze(merged):
-	#Use a dictionary to store every location with their corresponding part number(multiple) in a dictionary
-	print(len(merged))
+	#First remove anything that is a storage area
+
+	#List contains everything that is a storage area
+	storage = []
+
 
