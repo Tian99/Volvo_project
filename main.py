@@ -2,6 +2,7 @@ import sys
 from General import read, normalize, merge
 from Categorize import analyze
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
+import FloatingWindow
 
 
 class Map(QtWidgets.QMainWindow):
@@ -24,19 +25,41 @@ class Map(QtWidgets.QMainWindow):
 		#########################################################
 		#Front end part
 		uic.loadUi('./ui/MainWindow.ui', self)
+		#Add rhe floating windoe to every buttons in the userinterface
+		self.FloatingWindow = FloatingWindow.FloatingWindow(self)
+		#loop thought every possibility and call the specific window
+		self.detection()
 
 		self.setWindowTitle('Factory Layout')
-		#Try to get a list of all the widgest in pyqt
-		# self.A_0.setStyleSheet("background-color: red")
 		self.combine()
 
 		#Set the color of certain pushbuttons
+	#This function is to detect which button is clicked
+	#Which means loop through every signle one of them
+	def detection(self):
+		# print('clicking detected')
+		group = ['A', 'B', 'C']
+		limit = range(0, 45)
+		for j in group:
+			for i in limit:
+				name =  'self.'+j+'_'+str(i)+'.clicked.connect(self.floating_window_pushed)'
+				# print(name)
+				try:
+					eval(name)
+				except AttributeError:
+					continue
+
+	def floating_window_pushed(self):
+		#Every window should look different because every button have different aasignments, implement it later.
+		self.FloatingWindow.show()
+
 
 	def combine(self):
 
-		# #Set the overall background color
+		# Set the overall background color
 		# self.setStyleSheet("background-color: white")
 		#All the locations are bssed on a certain naming convention
+		#The code below colors the userinterface
 		cluster = 0
 		group = ['A','B','C']
 		first_range = range(0, 45)#Find any number from range 0 to 41
@@ -45,7 +68,7 @@ class Map(QtWidgets.QMainWindow):
 			for i in first_range:
 				try:
 					self.name = 'self.' + j + '_' + str(i) + '.setStyleSheet'
-					print(self.name)
+					# print(self.name)
 					if cluster == 1: 
 						self.name = self.name + '("color: #ff5500")'
 						eval(self.name)
@@ -60,7 +83,14 @@ class Map(QtWidgets.QMainWindow):
 
 		print('Coloring finished')
 
+	def fill_update_table(self):
+		#THe table keeps tracks of the most recent update, also the small useful informaiton
+		print('Still implementing')
 
+
+
+
+#The code download called everything
 if __name__ == '__main__':
 
 	APP = QtWidgets.QApplication([])

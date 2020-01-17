@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1515</width>
-    <height>790</height>
+    <height>913</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -1078,6 +1078,29 @@
     </property>
     <property name="text">
      <string>Hardware</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>600</y>
+      <width>1501</width>
+      <height>192</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>575</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>General</string>
     </property>
    </widget>
   </widget>
