@@ -2,6 +2,7 @@ import sys
 from General import read, normalize, merge
 from Categorize import analyze
 from PyQt5 import uic, QtCore, QtGui, QtWidgets
+from functools import partial
 import FloatingWindow
 
 
@@ -20,7 +21,9 @@ class Map(QtWidgets.QMainWindow):
 		#Merge the two files
 		merged = merge(nor_claims, nor_location)
 
+		#Drop the unused and merge the used by its class number(Vehicle model family)
 		analyze(merged)
+
 
 		#########################################################
 		#Front end part
@@ -29,9 +32,8 @@ class Map(QtWidgets.QMainWindow):
 		self.FloatingWindow = FloatingWindow.FloatingWindow(self)
 		#loop thought every possibility and call the specific window
 		self.detection()
-
 		self.setWindowTitle('Factory Layout')
-		self.combine()
+		self.coloring()
 
 		#Set the color of certain pushbuttons
 	#This function is to detect which button is clicked
@@ -42,19 +44,30 @@ class Map(QtWidgets.QMainWindow):
 		limit = range(0, 45)
 		for j in group:
 			for i in limit:
-				name =  'self.'+j+'_'+str(i)+'.clicked.connect(self.floating_window_pushed)'
+				convention = j+'_'+str(i)
+				name =  'self.'+j+'_'+str(i)+'.clicked.connect(partial(self.floating_window_pushed, convention))'
 				# print(name)
 				try:
 					eval(name)
 				except AttributeError:
 					continue
 
-	def floating_window_pushed(self):
+
+	def floating_window_pushed(self, convention):
+		sys.path.insert(0, '../data')
+		import recognition
 		#Every window should look different because every button have different aasignments, implement it later.
+		dictionary = recognition.combination
 		self.FloatingWindow.show()
+		#Set the location in the floating window
+		self.FloatingWindow.location.setText(dictionary[convention])
+		print(dictionary[convention])
+
+		# name = j+'_'+str(i)
+		# print(name)
 
 
-	def combine(self):
+	def coloring(self):
 
 		# Set the overall background color
 		# self.setStyleSheet("background-color: white")

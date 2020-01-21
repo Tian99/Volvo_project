@@ -42,8 +42,6 @@ def logic(x):
 	if(len(x) < 6):
 		return 2
 
-
-
 def normalize(df_claims, df_location):
 	#Drop the unwanted number
 
@@ -84,7 +82,10 @@ def merge(nor_claims, nor_location):
 
 	#See what the merged file looks like
 	# merged.to_excel('../data/output/merged.xlsx')
-	print('Mergning successfully')
+	print('Merging successfully')
+	print(len(merged.columns))
+	print(len(nor_claims.columns))
+	print(len(nor_location.columns))
 
 	return merged
 

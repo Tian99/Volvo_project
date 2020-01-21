@@ -33,11 +33,11 @@
       <x>180</x>
       <y>310</y>
       <width>41</width>
-      <height>211</height>
+      <height>201</height>
      </rect>
     </property>
     <property name="text">
-     <string>20</string>
+     <string>2Q</string>
     </property>
    </widget>
    <widget class="QPushButton" name="C_16">
@@ -670,7 +670,7 @@
       <x>210</x>
       <y>310</y>
       <width>91</width>
-      <height>181</height>
+      <height>161</height>
      </rect>
     </property>
     <property name="text">
@@ -878,7 +878,7 @@
       <x>290</x>
       <y>310</y>
       <width>41</width>
-      <height>191</height>
+      <height>171</height>
      </rect>
     </property>
     <property name="text">
