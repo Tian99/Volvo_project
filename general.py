@@ -1,13 +1,13 @@
 #Part description
 #Comment field
-import pandas as pd
 import os
-from pandas import ExcelWriter
+import pandas as pd
 from pandas import ExcelFile
+from pandas import ExcelWriter
 
 def read():
 	# Change the directory to whereever you store all the data
-	address_data = "~/desktop/junior/coop/"
+	address_data = "~/desktop/junior/Volvo_collections/project_1/"
 	file_claims = 'data/2019-12 Mack Claims.xlsx'
 	file_location = 'data/Location.xlsx'
 

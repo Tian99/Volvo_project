@@ -1,9 +1,9 @@
 import sys
-from General import read, normalize, merge
-from Categorize import analyze
-from PyQt5 import uic, QtCore, QtGui, QtWidgets
-from functools import partial
 import FloatingWindow
+from functools import partial
+from Categorize import analyze
+from General import read, normalize, merge
+from PyQt5 import uic, QtCore, QtGui, QtWidgets
 
 
 class Map(QtWidgets.QMainWindow):
